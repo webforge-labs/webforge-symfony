@@ -1,0 +1,27 @@
+{
+  "name":"webforge\/symfony",
+  "license":"MIT",
+  "authors":[
+    {
+      "name":"Philipp Scheit",
+      "email":"p.scheit@ps-webforge.com"
+    }
+  ],
+  "minimum-stability":"dev",
+  "require":{
+    
+  },
+  "autoload":{
+    "psr-0":{
+      "Webforge\\Symfony":[
+        "src\/php\/",
+        "tests\/php\/"
+      ]
+    }
+  },
+  "extra":{
+    "branch-alias":{
+      "dev-master":"1.0.x-dev"
+    }
+  }
+}
