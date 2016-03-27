@@ -6,3 +6,8 @@ services:
     tags: 
       - { name: jms_serializer.subscribing_handler }
       - { name: h4cc_alice_fixtures.provider }
+
+  webforge_symfony_form_iso_8601_date_time_type:
+    class: Webforge\Symfony\Form\Iso8601DateTimeType
+    tags:
+      - { name: form.type, alias: webforge_iso8601_date_time }
