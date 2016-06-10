@@ -6,9 +6,11 @@ use Symfony\Component\HttpKernel\Kernel as SymfonyKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Webforge\Common\System\Dir;
+use Dotenv\Dotenv;
 
 class Kernel extends SymfonyKernel
 {
+
     /**
      * Bootstrap code from project
      *
@@ -32,6 +34,13 @@ class Kernel extends SymfonyKernel
         $GLOBALS['env']['root'] = Dir::factoryTS($rootDir);
 
         require $GLOBALS['env']['root']->getFile('app/AppKernel.php');
+
+        if (getenv('SYMFONY_ENV') !== 'prod') {
+            $dotenv = new Dotenv($GLOBALS['env']['root']->wtsPath());
+            $dotenv->overload();
+            $dotenv->required('SYMFONY_ENV')->notEmpty()->allowedValues(['prod', 'staging', 'dev', 'test']);
+            $dotenv->required('SYMFONY_DEBUG')->isInteger()->allowedValues([0,1]);
+        }
 
         return $loader;
     }
