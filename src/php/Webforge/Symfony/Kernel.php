@@ -38,7 +38,7 @@ class Kernel extends SymfonyKernel
         if (getenv('SYMFONY_ENV') !== 'prod') {
             $dotenv = new Dotenv($GLOBALS['env']['root']->wtsPath());
             $dotenv->overload();
-            $dotenv->required('SYMFONY_ENV')->notEmpty()->allowedValues(['prod', 'staging', 'dev', 'test']);
+            $dotenv->required('SYMFONY_ENV')->notEmpty()->allowedValues(['production', 'staging', 'dev', 'test']);
             $dotenv->required('SYMFONY_DEBUG')->isInteger()->allowedValues([0,1]);
         }
 
