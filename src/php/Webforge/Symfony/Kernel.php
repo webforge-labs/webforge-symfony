@@ -136,6 +136,11 @@ class Kernel extends SymfonyKernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
+        // this does not work as prepend extension config, because we need to load configuration from files for a lot of extensions (the symfony api is not very enhanced there)
+        if (class_exists('Webforge\CmsBundle\WebforgeCmsBundle')) {
+            $loader->load('@WebforgeCmsBundle/Resources/config/prepend-configuration.yml');
+        }
+        $loader->load($this->getRootDir().'/../vendor/webforge/symfony/Resources/config/services.yml');
         $loader->load($this->getRootDir().'/../etc/symfony/config_'.$this->getEnvironment().'.yml');
     }
 }
