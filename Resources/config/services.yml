@@ -17,3 +17,9 @@ services:
     arguments: ["%root_directory%/files/mailspool"]
     tags:
       -  { name: console.command }
+
+  webforge_symfony_load_fixtures_command:
+    class: Webforge\Symfony\Commands\LoadFixturesCommand
+    arguments: [[@webforge_symfony_datetimehandler]]
+    tags:
+      -  { name: console.command }
