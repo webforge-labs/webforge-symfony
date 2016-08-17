@@ -10,6 +10,7 @@ use Dotenv\Dotenv;
 
 class Kernel extends SymfonyKernel
 {
+    protected $configDirectory = 'etc/symfony';
 
     /**
      * Bootstrap code from project
@@ -102,8 +103,14 @@ class Kernel extends SymfonyKernel
             $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             //$bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             //$bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new \h4cc\AliceFixturesBundle\h4ccAliceFixturesBundle();
-            $bundles[] = new \Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
+    
+            if (class_exists('\h4cc\AliceFixturesBundle\h4ccAliceFixturesBundle')) {
+                $bundles[] = new \h4cc\AliceFixturesBundle\h4ccAliceFixturesBundle();
+            }
+
+            if (class_exists('\Liip\FunctionalTestBundle\LiipFunctionalTestBundle')) {
+                $bundles[] = new \Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
+            }
         }
 
         return $bundles;
@@ -137,10 +144,11 @@ class Kernel extends SymfonyKernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         // this does not work as prepend extension config, because we need to load configuration from files for a lot of extensions (the symfony api is not very enhanced there)
-        if (class_exists('Webforge\CmsBundle\WebforgeCmsBundle')) {
-            $loader->load('@WebforgeCmsBundle/Resources/config/prepend-configuration.yml');
+        try {
+          $loader->load('@WebforgeCmsBundle/Resources/config/prepend-configuration.yml');
+        } catch (\InvalidArgumentException $e) {
         }
         $loader->load($this->getRootDir().'/../vendor/webforge/symfony/Resources/config/services.yml');
-        $loader->load($this->getRootDir().'/../etc/symfony/config_'.$this->getEnvironment().'.yml');
+        $loader->load($this->getRootDir().'/../'.$this->configDirectory.'/config_'.$this->getEnvironment().'.yml');
     }
 }
