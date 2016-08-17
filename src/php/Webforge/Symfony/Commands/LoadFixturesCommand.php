@@ -29,7 +29,7 @@ class LoadFixturesCommand extends ContainerAwareCommand {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $objectManager = $this->getContainer()->get(sprintf('doctrine.orm.%s_entity_manager', $input->getOption('manager')));
-    $aliceManager = $this->getContainer()->get(sprintf('webforge_symfony.alice_manager'));
+    $aliceManager = $this->getContainer()->get(sprintf('webforge_symfony_alice_manager'));
 
     $aliceManager->loadFixtures($input->getArgument('files'), $objectManager, $output, $input->getOption('purge'));
   }
