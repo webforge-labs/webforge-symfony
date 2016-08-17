@@ -148,7 +148,7 @@ class Kernel extends SymfonyKernel
           $loader->load('@WebforgeCmsBundle/Resources/config/prepend-configuration.yml');
         } catch (\InvalidArgumentException $e) {
         }
-        $loader->load($this->getRootDir().'/../vendor/webforge/symfony/Resources/config/services.yml');
+        $loader->load(__DIR__.'/../../../../Resources/config/services.yml');
         $loader->load($this->getRootDir().'/../'.$this->configDirectory.'/config_'.$this->getEnvironment().'.yml');
     }
 }

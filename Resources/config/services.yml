@@ -20,6 +20,14 @@ services:
 
   webforge_symfony_load_fixtures_command:
     class: Webforge\Symfony\Commands\LoadFixturesCommand
-    arguments: [[@webforge_symfony_datetimehandler]]
     tags:
       -  { name: console.command }
+
+  webforge_symfony_alice_loader:
+    class: Nelmio\Alice\Fixtures\Loader
+    factory: ['Webforge\Doctrine\Fixtures\AliceManager', createLoader]
+    arguments: [['@webforge_symfony_datetimehandler']]
+
+  webforge_symfony_alice_manager:
+    class: Webforge\Doctrine\Fixtures\AliceManager
+    arguments: [@webforge_symfony_alice_loader]
