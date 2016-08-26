@@ -23,6 +23,12 @@ services:
     tags:
       -  { name: console.command }
 
+  webforge_symfony_dql_query_command:
+    class: Webforge\Symfony\Commands\DqlQueryCommand
+    arguments: ["@doctrine"]
+    tags:
+      -  { name: console.command }
+
   webforge_symfony_alice_loader:
     class: Nelmio\Alice\Fixtures\Loader
     factory: ['Webforge\Doctrine\Fixtures\AliceManager', createLoader]
