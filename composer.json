@@ -11,7 +11,8 @@
   "require":{
     "jms/serializer": "*",
     "webforge/utils": "*",
-    "vlucas/phpdotenv": "^2.2"
+    "vlucas/phpdotenv": "^2.2",
+    "webmozart/json": "*"
   },
   "autoload":{
     "psr-0":{
