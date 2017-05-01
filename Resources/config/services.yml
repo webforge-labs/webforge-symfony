@@ -30,4 +30,4 @@ services:
 
   webforge_symfony_alice_manager:
     class: Webforge\Doctrine\Fixtures\AliceManager
-    arguments: [@webforge_symfony_alice_loader]
+    arguments: ['@webforge_symfony_alice_loader']
