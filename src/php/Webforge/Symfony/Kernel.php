@@ -36,7 +36,7 @@ class Kernel extends SymfonyKernel
 
         require $GLOBALS['env']['root']->getFile('app/AppKernel.php');
 
-        if (getenv('SYMFONY_ENV') !== 'prod') {
+        if (getenv('SYMFONY_ENV') == FALSE) {
             $dotenv = new Dotenv($GLOBALS['env']['root']->wtsPath());
             $dotenv->overload();
             $dotenv->required('SYMFONY_ENV')->notEmpty()->allowedValues(['production', 'staging', 'dev', 'test']);
