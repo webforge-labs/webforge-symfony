@@ -29,6 +29,7 @@ services:
     tags:
       -  { name: console.command }
 
+  # this is extended in webforgeCmsBundle as compiler pass to allow adding providers with tags
   webforge_symfony_alice_loader:
     class: Nelmio\Alice\Fixtures\Loader
     factory: ['Webforge\Doctrine\Fixtures\AliceManager', createLoader]
