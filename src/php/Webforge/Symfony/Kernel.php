@@ -98,6 +98,10 @@ class Kernel extends SymfonyKernel
             $bundles[] = new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle();
         }
 
+        if (class_exists('\Knp\Bundle\MarkdownBundle\KnpMarkdownBundle')) {
+            $bundles[] = new \Knp\Bundle\MarkdownBundle\KnpMarkdownBundle();
+        }
+
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
