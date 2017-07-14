@@ -12,12 +12,6 @@ services:
     tags:
       - { name: form.type, alias: webforge_iso8601_date_time }
 
-  webforge_symfony_mail_spool_command:
-    class: Webforge\Symfony\Commands\MailSpoolCommand
-    arguments: ["%root_directory%/files/mailspool"]
-    tags:
-      -  { name: console.command }
-
   webforge_symfony_load_fixtures_command:
     class: Webforge\Symfony\Commands\LoadFixturesCommand
     tags:
