@@ -78,9 +78,8 @@ class Kernel extends SymfonyKernel
             $bundles[] = new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle();
         }
 
-        if (class_exists('\Webforge\CmsBundle\WebforgeCmsBundle')) {
-            $bundles[] = new \Webforge\CmsBundle\WebforgeCmsBundle();
-            $bundles[] = new \Webforge\UserBundle\WebforgeUserBundle();
+        if (class_exists('\FOS\UserBundle\FOSUserBundle')) {
+            $bundles[] = new \FOS\UserBundle\FOSUserBundle();
         }
 
         if (class_exists('\Liip\ImagineBundle\LiipImagineBundle')) {
@@ -89,10 +88,6 @@ class Kernel extends SymfonyKernel
 
         if (class_exists('\JMS\SerializerBundle\JMSSerializerBundle')) {
             $bundles[] = new \JMS\SerializerBundle\JMSSerializerBundle();
-        }
-
-        if (class_exists('\FOS\UserBundle\FOSUserBundle')) {
-            $bundles[] = new \FOS\UserBundle\FOSUserBundle();
         }
 
         if (class_exists('\Knp\Bundle\GaufretteBundle\KnpGaufretteBundle')) {
@@ -107,6 +102,10 @@ class Kernel extends SymfonyKernel
             $bundles[] = new \Jb\Bundle\PhumborBundle\JbPhumborBundle();
         }
 
+        if (class_exists('\Webforge\CmsBundle\WebforgeCmsBundle')) {
+            $bundles[] = new \Webforge\CmsBundle\WebforgeCmsBundle();
+            $bundles[] = new \Webforge\UserBundle\WebforgeUserBundle();
+        }
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
