@@ -80,6 +80,7 @@ class Kernel extends SymfonyKernel
 
         if (class_exists('\Webforge\CmsBundle\WebforgeCmsBundle')) {
             $bundles[] = new \Webforge\CmsBundle\WebforgeCmsBundle();
+            $bundles[] = new \Webforge\UserBundle\WebforgeUserBundle();
         }
 
         if (class_exists('\Liip\ImagineBundle\LiipImagineBundle')) {
